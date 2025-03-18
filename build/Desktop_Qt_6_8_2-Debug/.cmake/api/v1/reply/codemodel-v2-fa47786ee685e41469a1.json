@@ -1,0 +1,196 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-22dc50a1f36fc4403899.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "GeigerPro",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_aotstats-Debug-c0f91b1d62eefea0baa9.json",
+					"name" : "all_aotstats",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Debug-2fb731a7b30caf3584d1.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Debug-98dedbb8a6b59a55c632.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_module-Debug-6e01ebb0ac19b1274728.json",
+					"name" : "all_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmltyperegistrations-Debug-8fc424847d6e0a31a766.json",
+					"name" : "all_qmltyperegistrations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro-Debug-558253d8f7585b1e7316.json",
+					"name" : "appGeigerPro",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_autogen-Debug-cff9998259bf9c8f03f4.json",
+					"name" : "appGeigerPro_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_autogen_timestamp_deps-Debug-702836f50374e3c5ad4f.json",
+					"name" : "appGeigerPro_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_copy_qml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_copy_qml-Debug-0719f199944c21e55dda.json",
+					"name" : "appGeigerPro_copy_qml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_copy_res::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_copy_res-Debug-b160260daa9db7299e4c.json",
+					"name" : "appGeigerPro_copy_res",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_qmlimportscan-Debug-ac0fd8c8ac2da2ce43e0.json",
+					"name" : "appGeigerPro_qmlimportscan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_qmllint-Debug-a3daf1542c07ce631513.json",
+					"name" : "appGeigerPro_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_qmllint_json-Debug-8131ea6cfd046c4ff2d3.json",
+					"name" : "appGeigerPro_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_qmllint_module-Debug-cd50cfa28ab2754a01fc.json",
+					"name" : "appGeigerPro_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appGeigerPro_qmltyperegistration::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appGeigerPro_qmltyperegistration-Debug-bfa0c343dd42890593aa.json",
+					"name" : "appGeigerPro_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "module_appGeigerPro_aotstats_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-module_appGeigerPro_aotstats_target-Debug-fd4ec9f176aa5231741d.json",
+					"name" : "module_appGeigerPro_aotstats_target",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/expert/Coding/GeigerPro/build/Desktop_Qt_6_8_2-Debug",
+		"source" : "/home/expert/Coding/GeigerPro"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

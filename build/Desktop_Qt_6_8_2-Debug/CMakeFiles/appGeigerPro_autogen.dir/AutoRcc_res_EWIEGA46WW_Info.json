@@ -1,0 +1,29 @@
+{
+	"BUILD_DIR" : "/home/expert/Coding/GeigerPro/build/Desktop_Qt_6_8_2-Debug/appGeigerPro_autogen",
+	"CMAKE_BINARY_DIR" : "/home/expert/Coding/GeigerPro/build/Desktop_Qt_6_8_2-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/expert/Coding/GeigerPro/build/Desktop_Qt_6_8_2-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/expert/Coding/GeigerPro",
+	"CMAKE_SOURCE_DIR" : "/home/expert/Coding/GeigerPro",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Ninja",
+	"INCLUDE_DIR" : "/home/expert/Coding/GeigerPro/build/Desktop_Qt_6_8_2-Debug/appGeigerPro_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/expert/Coding/GeigerPro/sounds/click4.wav",
+		"/home/expert/Coding/GeigerPro/sounds/click2.wav",
+		"/home/expert/Coding/GeigerPro/sounds/click0.wav",
+		"/home/expert/Coding/GeigerPro/sounds/click1.wav",
+		"/home/expert/Coding/GeigerPro/sounds/click3.wav"
+	],
+	"LOCK_FILE" : "/home/expert/Coding/GeigerPro/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/appGeigerPro_autogen.dir/AutoRcc_res_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "res" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_res.cpp",
+	"RCC_EXECUTABLE" : "/home/expert/Qt/6.8.2/gcc_64/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/expert/Coding/GeigerPro/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/appGeigerPro_autogen.dir/AutoRcc_res_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/expert/Coding/GeigerPro/res.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

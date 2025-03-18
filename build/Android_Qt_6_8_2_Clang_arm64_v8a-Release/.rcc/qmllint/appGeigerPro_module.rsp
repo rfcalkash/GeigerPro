@@ -1,0 +1,10 @@
+-I
+/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_arm64_v8a-Release
+-I
+/home/expert/Qt/6.8.2/android_arm64_v8a/qml
+--resource
+/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_arm64_v8a-Release/.qt/rcc/qmake_GeigerPro.qrc
+--resource
+/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_arm64_v8a-Release/.qt/rcc/appGeigerPro_raw_qml_0.qrc
+--module
+GeigerPro

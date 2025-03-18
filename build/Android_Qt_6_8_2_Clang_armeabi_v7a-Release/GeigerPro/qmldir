@@ -1,0 +1,5 @@
+module GeigerPro
+typeinfo appGeigerPro.qmltypes
+prefer :/qt/qml/GeigerPro/
+Main 1.0 Main.qml
+

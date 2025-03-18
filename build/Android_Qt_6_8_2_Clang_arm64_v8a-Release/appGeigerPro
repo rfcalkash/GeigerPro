@@ -1,0 +1,8 @@
+#!/bin/sh
+
+/home/expert/Qt/6.8.2/gcc_64/libexec/qt-android-runner.py \
+    --adb "/home/expert/Android/Sdk/platform-tools/adb" \
+    --build-path "/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_arm64_v8a-Release/android-build-appGeigerPro" \
+    --apk "/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_arm64_v8a-Release/android-build-appGeigerPro/appGeigerPro.apk" \
+    $@
+

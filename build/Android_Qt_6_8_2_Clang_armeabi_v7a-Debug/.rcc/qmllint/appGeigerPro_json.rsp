@@ -1,0 +1,12 @@
+--bare
+-I
+/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_armeabi_v7a-Debug
+-I
+/home/expert/Qt/6.8.2/android_armv7/qml
+--resource
+/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_armeabi_v7a-Debug/.qt/rcc/qmake_GeigerPro.qrc
+--resource
+/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_armeabi_v7a-Debug/.qt/rcc/appGeigerPro_raw_qml_0.qrc
+/home/expert/Coding/GeigerPro/Main.qml
+--json
+/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_armeabi_v7a-Debug/appGeigerPro_qmllint.json

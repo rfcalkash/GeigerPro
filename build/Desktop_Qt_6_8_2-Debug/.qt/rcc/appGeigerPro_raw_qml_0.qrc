@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/qt/qml/GeigerPro/">
+    <file alias="Main.qml">/home/expert/Coding/GeigerPro/Main.qml</file>
+    <file alias="res.qrc">/home/expert/Coding/GeigerPro/res.qrc</file>
+  </qresource>
+</RCC>
+
