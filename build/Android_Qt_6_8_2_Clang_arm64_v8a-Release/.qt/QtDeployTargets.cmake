@@ -1,2 +1,0 @@
-set(__QT_DEPLOY_TARGET_appGeigerPro_FILE /home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_arm64_v8a-Release/libappGeigerPro_arm64-v8a.so)
-set(__QT_DEPLOY_TARGET_appGeigerPro_TYPE MODULE_LIBRARY)

@@ -1,5 +1,0 @@
---resource
-/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_armeabi_v7a-Release/.qt/rcc/qmake_GeigerPro.qrc
---resource
-/home/expert/Coding/GeigerPro/build/Android_Qt_6_8_2_Clang_armeabi_v7a-Release/.qt/rcc/appGeigerPro_raw_qml_0.qrc
-/qt/qml/GeigerPro/Main.qml

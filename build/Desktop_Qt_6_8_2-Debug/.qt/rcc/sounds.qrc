@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file alias="sounds/click.wav">/home/expert/Coding/GeigerPro/sounds/click.wav</file>
-  </qresource>
-</RCC>
-

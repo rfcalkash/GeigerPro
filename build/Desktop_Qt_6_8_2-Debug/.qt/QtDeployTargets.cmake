@@ -1,2 +1,0 @@
-set(__QT_DEPLOY_TARGET_appGeigerPro_FILE /home/expert/Coding/GeigerPro/build/Desktop_Qt_6_8_2-Debug/appGeigerPro)
-set(__QT_DEPLOY_TARGET_appGeigerPro_TYPE EXECUTABLE)
