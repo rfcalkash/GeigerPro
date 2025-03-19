@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(GeigerPro VERSION 0.1 LANGUAGES CXX)
 
+set(PROJECT_VERSION_CODE 1)
+
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTORCC ON)
 
@@ -34,6 +36,18 @@ set_target_properties(appGeigerPro PROPERTIES
 
 target_link_libraries(appGeigerPro
     PRIVATE Qt6::Quick
+)
+
+set(ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
+
+set_target_properties(appGeigerPro PROPERTIES
+    QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android
+    QT_ANDROID_VERSION_CODE ${PROJECT_VERSION_CODE}
+    QT_ANDROID_VERSION_NAME "${PROJECT_VERSION}"
+    QT_ANDROID_TARGET_SDK_VERSION "36"
+    QT_ANDROID_MIN_SDK_VERSION "21"
+    QT_ANDROID_EXTRA_LIBS "${ANDROID_EXTRA_LIBS}"
+    QT_ANDROID_EXTRA_ARGUMENTS "--android-platform android-36"
 )
 
 include(GNUInstallDirs)

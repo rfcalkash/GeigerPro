@@ -117,17 +117,40 @@ ApplicationWindow {
         }
     }
 
-    MultiPointTouchArea{
-
+    // Событие касания
+    MouseArea {
+        id: touchArea
         anchors.fill: parent
-        function onUpdated(points) {
-            if(points.length>0){
-                radiationLevel = 10*width/points[0].x;
-                clicksPerMinute = Math.min(2000,Math.floor(radiationLevel * 200) + 10);
-                msBetweenClicks = clicksPerMinute > 0 ? 60000 / clicksPerMinute : 2000;
-            }
+
+        onPressed: {
+            updateRadiationLevel(mouse.x)
         }
 
+        onReleased: {
+            updateRadiationLevel(mouse.x)
+        }
+
+        onPositionChanged: {
+            updateRadiationLevel(mouse.x)
+        }
+
+        // Функция для обновления значения radiationLevel
+        function updateRadiationLevel(xPosition) {
+            var leftZoneLimit = parent.width * 0.1;  // 10% от левого края
+            var rightZoneLimit = parent.width * 0.9; // 90% от правого края (10% с правого края)
+
+            if (xPosition < leftZoneLimit) {
+                // Если касание в левой зоне (0-10%)
+                radiationLevel = 0.2;
+            } else if (xPosition > rightZoneLimit) {
+                // Если касание в правой зоне (90-100%)
+                radiationLevel = 10.0;
+            } else {
+                // Если касание в промежуточной зоне (между 10% и 90%)
+                var normalizedX = (xPosition - leftZoneLimit) / (rightZoneLimit - leftZoneLimit);
+                radiationLevel = 0.2 + (normalizedX * (10.0 - 0.2));
+            }
+        }
     }
 
     // Звуки щелчков счетчика Гейгера
