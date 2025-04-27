@@ -5,5 +5,12 @@
         <file>sounds/click3.wav</file>
         <file>sounds/click4.wav</file>
         <file>sounds/click0.wav</file>
+        <file>images/menu.svg</file>
+        <file>images/right-arrow.svg</file>
+        <file>images/about-geigerpro-icon.svg</file>
+        <file>images/geiger-counter-simulator-icon.svg</file>
+        <file>images/how-geiger-counter-works-icon.svg</file>
+        <file>images/how-radiation-works-icon.svg</file>
+        <file>images/shielding-against-radiation-icon.svg</file>
     </qresource>
 </RCC>

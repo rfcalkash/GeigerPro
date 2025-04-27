@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtMultimedia
+import QtQuick.Controls.Material
 
 ApplicationWindow {
     id: root
@@ -9,200 +10,87 @@ ApplicationWindow {
     width: 360
     height: 640
     title: "Счетчик Гейгера"
-
-    property double radiationLevel: 0.2 // Начальный уровень радиации (от 0.0 до 1.0)
-    property int clicksPerMinute: Math.floor(radiationLevel * 200) + 10 // От 10 до 210 щелчков в минуту
-    property int msBetweenClicks: clicksPerMinute > 0 ? 60000 / clicksPerMinute : 6000
-
-    // Функция для рандомизации времени между щелчками в пределах ±10%
-    function getRandomInterval() {
-        // Вычисляем ±10% от базового интервала
-        var variation = msBetweenClicks * 0.5;
-        var min = msBetweenClicks - variation;
-        var max = msBetweenClicks + variation;
-        // Генерируем случайное значение в этом диапазоне
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+    color: "#F0F0F0"
+    RoundButton{
+        id: btnId
+        icon.source: "qrc:/images/right-arrow.svg"
+        rotation: menuDrawer.position*180
+        Behavior on rotation {NumberAnimation{duration:100}}
+        height: Material.buttonHeight
+        width: height
+        onClicked: menuDrawer.opened?menuDrawer.close():menuDrawer.open()
+        flat: true
     }
 
-    Rectangle {
-        anchors.fill: parent
-        color: "#F0F0F0"
-
-        ColumnLayout {
-            anchors.fill: parent
-            anchors.margins: 20
-            spacing: 20
-
-            Item { Layout.fillHeight: true } // Верхний отступ
-
-            // Круг с изменяющимся цветом
-            Rectangle {
-                id: radiationCircle
-                Layout.alignment: Qt.AlignHCenter
-                Layout.preferredWidth: Math.min(parent.width - 40, 300)
-                Layout.preferredHeight: Layout.preferredWidth
-                radius: width / 2
-                border.width: 3
-                border.color: "#222222"
-
-                // Градиент от зеленого к красному в зависимости от уровня радиации
-                color: {
-                    if (radiationLevel < 0.3) {
-                        return Qt.rgba(0.2, 0.8, 0.2, 1.0); // Зеленый
-                    } else if (radiationLevel < 1.2) {
-                        return Qt.rgba(0.8, 0.8, 0.2, 1.0); // Желтый
-                    } else if (radiationLevel < 10) {
-                        return Qt.rgba(0.8, 0.5, 0.2, 1.0); // Оранжевый
-                    } else {
-                        return Qt.rgba(0.8, 0.2, 0.2, 1.0); // Красный
+    Drawer {
+        id: menuDrawer
+        y: btnId.height
+        width: root.width * 0.7
+        height: root.height - btnId.height
+        ColumnLayout{
+            anchors{top:parent.top;left: parent.left;right: parent.right; margins: Material.frameVerticalPadding}
+            Repeater{
+                model:[
+                    {name:qsTr("Geiger counter simulator"), value:0, separator:false, icon: "qrc:/images/geiger-counter-simulator-icon.svg"},
+                    {name:qsTr("How Geiger counter works"), value:1, separator:true, icon: "qrc:/images/how-geiger-counter-works-icon.svg"},
+                    {name:qsTr("How radiation works"), value:2, separator:false, icon: "qrc:/images/how-radiation-works-icon.svg"},
+                    {name:qsTr("Shielding against radiation"), value:3, separator:false, icon: "qrc:/images/shielding-against-radiation-icon.svg"},
+                    {name:qsTr("About GeigerPro"), value:4, separator:true, icon: "qrc:/images/about-geigerpro-icon.svg"},
+                ]
+                delegate: Item {
+                    Layout.fillWidth: true
+                    height: separId.height+delegateId.height
+                    Item{
+                        id:separId
+                        height: modelData.separator?Material.frameVerticalPadding:0
+                        Rectangle{
+                            anchors.verticalCenter: parent.verticalCenter
+                            height: 1
+                            width: parent.width
+                            color: Material.secondaryTextColor
+                            opacity: modelData.separator?1:0
+                        }
+                    }
+                    MouseArea{
+                        id: delegateId
+                        width: parent.width
+                        height: Material.delegateHeight
+                        anchors.top: separId.bottom
+                        onClicked: {
+                            stackId.currentIndex=modelData.value
+                            menuDrawer.close()
+                        }
+                        RowLayout{
+                            anchors.fill: parent
+                            Image {
+                                source: modelData.icon
+                                Layout.fillHeight: true
+                                width: height
+                                sourceSize: Qt.size(width,height)
+                            }
+                            Label{
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+                                verticalAlignment: Qt.AlignVCenter
+                                text: modelData.name
+                                color: modelData.value===stackId.currentIndex?Material.accentColor:Material.primaryTextColor
+                            }
+                        }
                     }
                 }
-
-                // Плавная анимация изменения цвета
-                Behavior on color {
-                    ColorAnimation { duration: 500 }
-                }
-
-                // Текст со значением радиации
-                Text {
-                    anchors.centerIn: parent
-                    text: (radiationLevel).toFixed(1) + " μSv/h"
-                    font.pixelSize: parent.width / 10
-                    font.bold: true
-                    color: "#222222"
-                }
-
-                // // Дополнительная информация
-                // Text {
-                //     anchors.horizontalCenter: parent.horizontalCenter
-                //     anchors.top: parent.verticalCenter
-                //     anchors.topMargin: 30
-                //     text: clicksPerMinute + " щелчков/мин"
-                //     font.pixelSize: parent.width / 15
-                //     color: "#333333"
-                // }
             }
-
-            Item { Layout.fillHeight: true } // Средний отступ
-
-            // // Ползунок для изменения уровня радиации
-            // ColumnLayout {
-            //     Layout.fillWidth: true
-            //     spacing: 10
-
-            //     Text {
-            //         text: "Уровень радиации:"
-            //         font.pixelSize: 16
-            //         Layout.alignment: Qt.AlignHCenter
-            //     }
-
-            //     Slider {
-            //         id: radiationSlider
-            //         Layout.fillWidth: true
-            //         from: 0.0
-            //         to: 10.0
-            //         value: radiationLevel
-
-            //         onValueChanged: {
-            //             radiationLevel = value;
-            //             clicksPerMinute = Math.min(2000,Math.floor(radiationLevel * 200) + 10);
-            //             msBetweenClicks = clicksPerMinute > 0 ? 60000 / clicksPerMinute : 2000;
-            //             // Сразу обновляем интервал таймера с учетом рандомизации
-            //             // clickTimer.interval = getRandomInterval();
-            //         }
-            //     }
-            // }
-
-            // Item { Layout.fillHeight: true } // Нижний отступ
         }
     }
 
-    // Событие касания
-    MouseArea {
-        id: touchArea
+    StackLayout{
+        id: stackId
         anchors.fill: parent
-
-        onPressed: {
-            updateRadiationLevel(mouse.x)
-        }
-
-        onReleased: {
-            updateRadiationLevel(mouse.x)
-        }
-
-        onPositionChanged: {
-            updateRadiationLevel(mouse.x)
-        }
-
-        // Функция для обновления значения radiationLevel
-        function updateRadiationLevel(xPosition) {
-            var leftZoneLimit = parent.width * 0.1;  // 10% от левого края
-            var rightZoneLimit = parent.width * 0.9; // 90% от правого края (10% с правого края)
-
-            if (xPosition < leftZoneLimit) {
-                // Если касание в левой зоне (0-10%)
-                radiationLevel = 0.2;
-            } else if (xPosition > rightZoneLimit) {
-                // Если касание в правой зоне (90-100%)
-                radiationLevel = 10.0;
-            } else {
-                // Если касание в промежуточной зоне (между 10% и 90%)
-                var normalizedX = (xPosition - leftZoneLimit) / (rightZoneLimit - leftZoneLimit);
-                radiationLevel = 0.2 + (normalizedX * (10.0 - 0.2));
-            }
+        anchors.topMargin: btnId.height
+        GeigerEmulator {
+            activeSound: stackId.currentIndex===0
+            Layout.fillHeight: true
+            Layout.fillWidth: true
         }
     }
 
-    // Звуки щелчков счетчика Гейгера
-    // Repeater{
-    //     id: soundsR
-    //     model:5
-    //     delegate: SoundEffect {
-    //         source: "qrc:/sounds/click"+index+".wav"
-    //     }
-    // }
-
-    property var soundArray: []
-
-    Component.onCompleted: {
-        // Создаем SoundEffect динамически
-        for (var i = 0; i < 5; i++) {
-            var soundEffect = Qt.createQmlObject(
-                        'import QtMultimedia; SoundEffect { source: "qrc:/sounds/click'+i+'.wav"}',
-                        root,
-                        "dynamicSound" + i
-                        )
-            soundArray.push(soundEffect)
-        }
-    }
-
-    // Таймер для генерации щелчков
-    Timer {
-        id: clickTimer
-        interval: getRandomInterval() // Начальный интервал с рандомизацией
-        running: true
-        repeat: true
-
-        onTriggered: {
-            var sounds = []
-            for (let i = 0; i < 5; i++) {
-                if(!soundArray[i].playing){
-                    sounds.push(i)
-                }
-            }
-            var sound;
-            if(sounds.length===0){
-                const randomIndex = Math.floor(Math.random() * soundArray.length);
-                sound= soundArray[randomIndex];
-            } else {
-                const randomIndex = Math.floor(Math.random() * sounds.length);
-                sound = soundArray[sounds[randomIndex]];
-            }
-            sound.volume=Math.random()*0.2+0.8;
-            sound.play();
-
-            // Устанавливаем новый случайный интервал при каждом срабатывании
-            interval = getRandomInterval();
-        }
-    }
 }

@@ -1,0 +1,148 @@
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtMultimedia
+import QtQuick.Controls.Material
+
+Item {
+    property alias activeSound: clickTimer.running
+    property double radiationLevel: 0.2 // Начальный уровень радиации (от 0.0 до 1.0)
+    property int clicksPerMinute: Math.floor(radiationLevel * 200) + 10 // От 10 до 210 щелчков в минуту
+    property int msBetweenClicks: clicksPerMinute > 0 ? 60000 / clicksPerMinute : 6000
+    // Функция для рандомизации времени между щелчками в пределах ±10%
+    function getRandomInterval() {
+        // Вычисляем ±10% от базового интервала
+        var variation = msBetweenClicks * 0.5;
+        var min = msBetweenClicks - variation;
+        var max = msBetweenClicks + variation;
+        // Генерируем случайное значение в этом диапазоне
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    property var soundArray: []
+
+    Component.onCompleted: {
+        // Создаем SoundEffect динамически
+        for (var i = 0; i < 5; i++) {
+            var soundEffect = Qt.createQmlObject(
+                        'import QtMultimedia; SoundEffect { source: "qrc:/sounds/click'+i+'.wav"}',
+                        root,
+                        "dynamicSound" + i
+                        )
+            soundArray.push(soundEffect)
+        }
+    }
+
+    // Таймер для генерации щелчков
+    Timer {
+        id: clickTimer
+        interval: getRandomInterval() // Начальный интервал с рандомизацией
+        repeat: true
+
+        onTriggered: {
+            var sounds = []
+            for (let i = 0; i < 5; i++) {
+                if(!soundArray[i].playing){
+                    sounds.push(i)
+                }
+            }
+            var sound;
+            if(sounds.length===0){
+                const randomIndex = Math.floor(Math.random() * soundArray.length);
+                sound= soundArray[randomIndex];
+            } else {
+                const randomIndex = Math.floor(Math.random() * sounds.length);
+                sound = soundArray[sounds[randomIndex]];
+            }
+            sound.volume=Math.random()*0.2+0.8;
+            sound.play();
+
+            // Устанавливаем новый случайный интервал при каждом срабатывании
+            interval = getRandomInterval();
+        }
+    }
+    
+    ColumnLayout {
+        anchors.fill: parent
+        anchors.margins: 20
+        spacing: 20
+        
+        Item { Layout.fillHeight: true } // Верхний отступ
+        
+        // Круг с изменяющимся цветом
+        Rectangle {
+            id: radiationCircle
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: Math.min(parent.width - 40, 300)
+            Layout.preferredHeight: Layout.preferredWidth
+            radius: width / 2
+            border.width: 3
+            border.color: "#222222"
+            
+            // Градиент от зеленого к красному в зависимости от уровня радиации
+            color: {
+                if (radiationLevel < 0.3) {
+                    return Qt.rgba(0.2, 0.8, 0.2, 1.0); // Зеленый
+                } else if (radiationLevel < 1.2) {
+                    return Qt.rgba(0.8, 0.8, 0.2, 1.0); // Желтый
+                } else if (radiationLevel < 10) {
+                    return Qt.rgba(0.8, 0.5, 0.2, 1.0); // Оранжевый
+                } else {
+                    return Qt.rgba(0.8, 0.2, 0.2, 1.0); // Красный
+                }
+            }
+            
+            // Плавная анимация изменения цвета
+            Behavior on color {
+                ColorAnimation { duration: 500 }
+            }
+            
+            // Текст со значением радиации
+            Text {
+                anchors.centerIn: parent
+                text: (radiationLevel).toFixed(1) + " "+qsTr("μSv/h")
+                font.pixelSize: parent.width / 10
+                font.bold: true
+                color: "#222222"
+            }
+        }
+        
+        Item { Layout.fillHeight: true } // Средний отступ
+    }
+
+    // Событие касания
+    MouseArea {
+        id: touchArea
+        anchors.fill: parent
+
+        onPressed: {
+            updateRadiationLevel(mouse.x)
+        }
+
+        onReleased: {
+            updateRadiationLevel(mouse.x)
+        }
+
+        onPositionChanged: {
+            updateRadiationLevel(mouse.x)
+        }
+
+        // Функция для обновления значения radiationLevel
+        function updateRadiationLevel(xPosition) {
+            var leftZoneLimit = parent.width * 0.1;  // 10% от левого края
+            var rightZoneLimit = parent.width * 0.9; // 90% от правого края (10% с правого края)
+
+            if (xPosition < leftZoneLimit) {
+                // Если касание в левой зоне (0-10%)
+                radiationLevel = 0.2;
+            } else if (xPosition > rightZoneLimit) {
+                // Если касание в правой зоне (90-100%)
+                radiationLevel = 10.0;
+            } else {
+                // Если касание в промежуточной зоне (между 10% и 90%)
+                var normalizedX = (xPosition - leftZoneLimit) / (rightZoneLimit - leftZoneLimit);
+                radiationLevel = 0.2 + (normalizedX * (10.0 - 0.2));
+            }
+        }
+    }
+}

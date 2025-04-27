@@ -1,13 +1,16 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(GeigerPro VERSION 0.1 LANGUAGES CXX)
-
 set(PROJECT_VERSION_CODE 1)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia)
+find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia LinguistTools)
+
+qt_standard_project_setup(
+    I18N_SOURCE_LANGUAGE en
+    I18N_TRANSLATED_LANGUAGES zh hi es ar ru fr de ja)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
@@ -15,12 +18,15 @@ qt_add_executable(appGeigerPro
     main.cpp
 )
 
+qt_add_translations(appGeigerPro)
+
 qt_add_qml_module(appGeigerPro
     URI GeigerPro
     VERSION 1.0
     QML_FILES
         Main.qml
         RESOURCES res.qrc
+        QML_FILES GeigerEmulator.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
