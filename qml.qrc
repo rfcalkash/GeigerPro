@@ -1,0 +1,17 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file>Main.qml</file>
+        <file>ArticleView.qml</file>
+        <file>articles.qml</file>
+        <file>icons/menu.png</file>
+        <file>icons/back.png</file>
+        <file>translations/translations.ts</file>
+        <file>translations/translations_en.ts</file>
+        <file>translations/translations_de.ts</file>
+        <file>translations/translations_fr.ts</file>
+        <file>translations/translations_uk.ts</file>
+        <file>translations/translations_zh.ts</file>
+        <file>translations/translations_ja.ts</file>
+    </qresource>
+</RCC> 
