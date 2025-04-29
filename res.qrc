@@ -15,5 +15,6 @@
         <file>images/articles/geiger/1.png</file>
         <file>images/articles/geiger/2.png</file>
         <file>images/articles/geiger/anim1-2.gif</file>
+        <file>images/articles/geiger/anim1-2.webp</file>
     </qresource>
 </RCC>

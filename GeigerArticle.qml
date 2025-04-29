@@ -15,7 +15,7 @@ Item{
             Layout.fillWidth: true
             Layout.fillHeight: true
             fillMode: Image.PreserveAspectFit
-            source:"qrc:/images/articles/geiger/anim1-2.gif"
+            source:"qrc:/images/articles/geiger/anim1-2.webp"
             playing: geigerArticle.animating && currentFrame<frameCount-1
             speed: 1
             onCurrentFrameChanged: {
