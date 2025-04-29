@@ -17,7 +17,7 @@ Item{
             fillMode: Image.PreserveAspectFit
             source:"qrc:/images/articles/geiger/anim1-2.gif"
             playing: geigerArticle.animating && currentFrame<frameCount-1
-            speed: 2
+            speed: 1
             onCurrentFrameChanged: {
                 if(currentFrame===frameCount-1){
                     geigerArticle.animating=false
@@ -25,7 +25,8 @@ Item{
             }
         }
         RowLayout{
-            
+            opacity: geigerArticle.animating?0:1
+            Behavior on opacity {NumberAnimation {duration: 200}}
             RoundButton{
                 icon.source: "qrc:/images/right-arrow.svg"
                 rotation: 180
@@ -39,8 +40,7 @@ Item{
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 wrapMode: Text.Wrap
-                opacity: geigerArticle.animating?0:1
-                Behavior on opacity {NumberAnimation {duration: 200}}
+                verticalAlignment: Text.AlignVCenter
             }
             RoundButton{
                 icon.source: "qrc:/images/right-arrow.svg"
