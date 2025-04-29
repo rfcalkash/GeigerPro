@@ -12,5 +12,8 @@
         <file>images/how-geiger-counter-works-icon.svg</file>
         <file>images/how-radiation-works-icon.svg</file>
         <file>images/shielding-against-radiation-icon.svg</file>
+        <file>images/articles/geiger/1.png</file>
+        <file>images/articles/geiger/2.png</file>
+        <file>images/articles/geiger/anim1-2.gif</file>
     </qresource>
 </RCC>

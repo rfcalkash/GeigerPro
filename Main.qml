@@ -85,9 +85,14 @@ ApplicationWindow {
     StackLayout{
         id: stackId
         anchors.fill: parent
-        anchors.topMargin: btnId.height
+        anchors{topMargin: btnId.height+Material.frameVerticalPadding;leftMargin: Material.frameVerticalPadding;rightMargin: Material.frameVerticalPadding; bottomMargin: Material.frameVerticalPadding}
         GeigerEmulator {
             activeSound: stackId.currentIndex===0
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+        GeigerArticle {
+            id: geigerArticle
             Layout.fillHeight: true
             Layout.fillWidth: true
         }
