@@ -10,7 +10,7 @@ ApplicationWindow {
     width: 360
     height: 640
     title: "Счетчик Гейгера"
-    color: "#F0F0F0"
+    color: Material.backgroundColor
     RoundButton{
         id: btnId
         icon.source: "qrc:/images/right-arrow.svg"

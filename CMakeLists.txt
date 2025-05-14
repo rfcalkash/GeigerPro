@@ -29,6 +29,9 @@ qt_add_qml_module(appGeigerPro
         QML_FILES GeigerEmulator.qml
         QML_FILES GeigerArticle.qml
         SOURCES animatedframeitem.h animatedframeitem.cpp
+        QML_FILES Callout.qml
+        QML_FILES LineFromTo.qml
+        SOURCES gaspainter.h gaspainter.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
