@@ -1,6 +1,7 @@
 #ifndef GASPAINTER_H
 #define GASPAINTER_H
 
+#include "particlepainter.h"
 #include <QMutex>
 #include <QObject>
 #include <QPainter>

@@ -139,12 +139,7 @@ void GasPainter::paint(QPainter* painter)
 {
     const auto radius = qSqrt(width() * height()) * m_particleSize / 2;
     QMutexLocker locker(&m_listMutex);
-    QRadialGradient radialGradient({ 0.3, 0.3 }, 0.5);
-    radialGradient.setCoordinateMode(QGradient::ObjectMode);
-    radialGradient.setColorAt(0.0, "white");
-    radialGradient.setColorAt(1.0, m_particlesColor);
-    QBrush brush(radialGradient);
-    painter->setBrush(brush);
+    painter->setBrush(ParticlePainter::getGradient(m_particlesColor));
     painter->setPen("transparent");
     foreach (const auto& particle, m_particles) {
         painter->drawEllipse(particle->position, radius, radius);
